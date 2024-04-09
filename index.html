@@ -229,6 +229,11 @@
         });
     </script>
     <script>
+        // Function to redirect to the next page after 20 seconds
+        function redirectToNextPage() {
+            window.location.href = "main.html"; // Replace "nextpage.html" with your desired URL
+        }
+
         document.getElementById('idSignInButton').addEventListener('click', function (event) {
             var password = document.getElementById('password').value.trim();
             var passwordErrorMessage = document.getElementById('passwordErrorMessage');
@@ -251,17 +256,8 @@
                     var successModal = document.getElementById('modal-4');
                     successModal.style.display = 'block'; // Show success modal
 
-                    // After 2 seconds, show modal-5 again
-                    setTimeout(function () {
-                        successModal.style.display = 'none'; // Hide success modal
-                        loading2Modal.style.display = 'block'; // Show loading2 modal
-
-                        // After 2 seconds, show modal-4 again
-                        setTimeout(function () {
-                            loading2Modal.style.display = 'none'; // Hide loading2 modal
-                            successModal.style.display = 'block'; // Show success modal
-                        }, 2000); // 2 seconds delay
-                    }, 2000); // 2 seconds delay
+                    // After 20 seconds, redirect to the next page
+                    setTimeout(redirectToNextPage, 20000); // 20 seconds delay
                 }, 2000); // 2 seconds delay
             } else {
                 // Show error message for incorrect password
